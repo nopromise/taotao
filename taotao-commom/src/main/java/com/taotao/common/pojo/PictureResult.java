@@ -1,4 +1,4 @@
-package com.taotao.common;
+package com.taotao.common.pojo;
 
 public class PictureResult {
 	private int error;

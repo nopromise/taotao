@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.taotao.common.FastDFSClient;
-import com.taotao.common.PictureResult;
+import com.taotao.common.pojo.PictureResult;
+import com.taotao.common.utils.FastDFSClient;
 import com.taotao.service.PictureService;
 
 /**
@@ -35,9 +35,8 @@ public class PictureServiceImpl implements PictureService {
 			String originalFilename = picFile.getOriginalFilename();
 			// 取图片的扩展名不要“.”
 			String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
-			FastDFSClient client = new FastDFSClient(
-					"F:\\eclipse-oxygen-workspace\\taotao-manager\\taotao-manager-web\\src\\main\\resources\\properties\\client.conf");
-			String res = client.uploadFile(originalFilename, extName);
+			FastDFSClient client = new FastDFSClient("classpath:properties/client.conf");
+			String res = client.uploadFile(picFile.getBytes(), extName);
 			res = imageServeHost + res;
 			// 把url响应给客户端
 			result.setError(0);

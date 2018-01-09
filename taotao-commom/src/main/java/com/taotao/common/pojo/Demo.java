@@ -1,4 +1,6 @@
-package com.taotao.common;
+package com.taotao.common.pojo;
+
+import com.taotao.common.utils.FastDFSClient;
 
 public class Demo {
 	public static void main(String[] args) {
