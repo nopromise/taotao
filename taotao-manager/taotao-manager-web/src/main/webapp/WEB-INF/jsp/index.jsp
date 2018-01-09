@@ -17,9 +17,9 @@
          	<li>
          		<span>商品管理</span>
          		<ul>
-	         		<li data-options="attributes:{'url':'/item-add'}">新增商品</li>
-	         		<li data-options="attributes:{'url':'/item-list'}">查询商品</li>
-	         		<li data-options="attributes:{'url':'/item-param-list'}">规格参数</li>
+	         		<li data-options="attributes:{'url':'${pageContext.request.contextPath }/item-add'}">新增商品</li>
+	         		<li data-options="attributes:{'url':'${pageContext.request.contextPath }/item-list'}">查询商品</li>
+	         		<li data-options="attributes:{'url':'${pageContext.request.contextPath }/item-param-list'}">规格参数</li>
 	         	</ul>
          	</li>
          	<li>
@@ -36,6 +36,7 @@
 		    <div title="首页" style="padding:20px;">
 		        	
 		    </div>
+		    
 		</div>
     </div>
     
@@ -59,6 +60,8 @@ $(function(){
 			}
 		}
 	});
+	
+	
 });
 </script>
 </body>

@@ -9,6 +9,10 @@
 	<artifactId>taotao-common</artifactId>
 	<!-- 添加依赖 -->
 	<dependencies>
+		<dependency>
+			<groupId>org.csource</groupId>
+			<artifactId>fastdfs-client-java</artifactId>
+		</dependency>
 		<!-- 时间操作组件 -->
 		<dependency>
 			<groupId>joda-time</groupId>

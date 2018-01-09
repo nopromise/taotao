@@ -32,10 +32,18 @@
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
 		<json-simple.version>1.1.1</json-simple.version>
+		<fastdfs-client>1.27-SNAPSHOT</fastdfs-client>
 	</properties>
 	<dependencyManagement>
-		<!-- googlecode.json-simple -->
+
 		<dependencies>
+			<!-- fastdfs-client -->
+			<dependency>
+				<groupId>org.csource</groupId>
+				<artifactId>fastdfs-client-java</artifactId>
+				<version>${fastdfs-client}</version>
+			</dependency>
+			<!-- googlecode.json-simple -->
 			<dependency>
 				<groupId>com.googlecode.json-simple</groupId>
 				<artifactId>json-simple</artifactId>

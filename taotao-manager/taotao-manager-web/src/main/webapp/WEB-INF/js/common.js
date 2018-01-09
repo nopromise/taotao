@@ -1,3 +1,6 @@
+//初始化项目路径 ：/taotao-manager-web/
+var pathName=window.location.pathname;
+//alert(pathName);
 Date.prototype.format = function(format){ 
     var o =  { 
     "M+" : this.getMonth()+1, //month 
@@ -23,7 +26,7 @@ var TT = TAOTAO = {
 	// 编辑器参数
 	kingEditorParams : {
 		filePostName  : "uploadFile",
-		uploadJson : '/rest/pic/upload',
+		uploadJson : pathName+'/pic/upload',
 		dir : "image"
 	},
 	// 格式化时间
@@ -97,6 +100,8 @@ var TT = TAOTAO = {
     
     // 初始化选择类目组件
     initItemCat : function(data){
+    	//项目路径
+    	//alert(window.location.host+"--"+window.location.pathname+"----"+location.href);
     	$(".selectItemCat").each(function(i,e){
     		var _ele = $(e);
     		if(data && data.cid){
@@ -116,7 +121,7 @@ var TT = TAOTAO = {
     			    onOpen : function(){
     			    	var _win = this;
     			    	$("ul",_win).tree({
-    			    		url:'/item/cat/list',
+    			    		url:pathName+'item/cat/list',
     			    		animate:true,
     			    		onClick : function(node){
     			    			if($(this).tree("isLeaf",node.target)){
