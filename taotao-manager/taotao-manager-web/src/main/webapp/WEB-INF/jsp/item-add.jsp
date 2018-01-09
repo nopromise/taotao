@@ -106,14 +106,14 @@
 		
 		$("#itemAddForm [name=itemParams]").val(paramJson);
 		
-		/*
-		$.post("/rest/item/save",$("#itemAddForm").serialize(), function(data){
+		
+		$.post("${pageContext.request.contextPath }/item/save",$("#itemAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','新增商品成功!');
 			}
 		});
-		*/
 		
+		/*
 		//提交到后台的RESTful
 		$.ajax({
 		   type: "POST",
@@ -126,6 +126,7 @@
 			   $.messager.alert('提示','新增商品失败!');
 		   }
 		});
+		*/
 	}
 	
 	function clearForm(){
