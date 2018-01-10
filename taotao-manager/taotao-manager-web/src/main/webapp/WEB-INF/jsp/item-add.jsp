@@ -70,6 +70,7 @@
 		itemAddEditor = TAOTAO.createEditor("#itemAddForm [name=desc]");
 		//初始化类目选择和图片上传器
 		TAOTAO.init({fun:function(node){
+			//根据商品的分类id取商品的规格模版，生成规格信息
 			TAOTAO.changeItemParam(node, "itemAddForm");
 		}});
 	});
@@ -81,7 +82,7 @@
 		}
 		//处理商品的价格的单位，将元转化为分
 		$("#itemAddForm [name=price]").val(eval($("#itemAddForm [name=priceView]").val()) * 100);
-		//将编辑器中的内容同步到隐藏多行文本中
+		//将编辑器中的内容同步到隐藏多行文本中【同步文本框中的商品描述】
 		itemAddEditor.sync();
 		
 		//输入的规格参数数据保存为json
@@ -103,7 +104,7 @@
 			});
 		});
 		paramJson = JSON.stringify(paramJson);
-		
+		//把paramJson数据插入到隐藏域中
 		$("#itemAddForm [name=itemParams]").val(paramJson);
 		
 		

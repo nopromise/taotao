@@ -41,16 +41,16 @@
 			fun:function(node){
 			$(".addGroupTr").hide().find(".param").remove();
 				//  判断选择的目录是否已经添加过规格
-			  /* $.getJSON("/rest/item/param/" + node.id,function(data){
-				  if(data){
+			   $.getJSON("${pageContext.request.contextPath }/item/param/query/itemcatid/" + node.id,function(data){
+				  if(data.status==200&&data.data){
 					  $.messager.alert("提示", "该类目已经添加，请选择其他类目。", undefined, function(){
 						 $("#itemParamAddTable .selectItemCat").click();
 					  });
 					  return ;
 				  }
 				  $(".addGroupTr").show();
-			  }); */
-				
+			  }); 
+			/*	
 			  $.ajax({
 				   type: "GET",
 				   url: "/rest/item/param/" + node.id,
@@ -66,7 +66,7 @@
 				   error: function(){
 					   alert("error");
 				   }
-				});
+				});*/
 			}
 		});
 		
@@ -109,12 +109,14 @@
 					});					
 				}
 			});
-			var url = "/rest/item/param/"+$("#itemParamAddTable [name=cid]").val();
+			var url = " ${pageContext.request.contextPath }/item/param/save/"+$("#itemParamAddTable [name=cid]").val();
 			$.post(url,{"paramData":JSON.stringify(params)},function(data){
+				if(data.status==200){
 				$.messager.alert('提示','新增商品规格成功!',undefined,function(){
 					$(".panel-tool-close").click();
    					$("#itemParamList").datagrid("reload");
    				});
+			   }
 			});
 		});
 	});
