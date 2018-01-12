@@ -12,7 +12,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#contentCategory").tree({
-		url : '/rest/content/category',
+		url : '${pageContext.request.contextPath }/content/category/list',
 		animate: true,
 		method : "GET",
 		onContextMenu: function(e,node){
@@ -27,16 +27,16 @@ $(function(){
         	var _tree = $(this);
         	if(node.id == 0){
         		// 新增节点
-        		$.post("/rest/content/category",{parentId:node.parentId,name:node.text},function(data){
+        		$.post("${pageContext.request.contextPath }/content/category/create",{parentId:node.parentId,name:node.text},function(data){
         			_tree.tree("update",{
         				target : node.target,
-        				id : data.id
+        				id : data.data
         			});
         		});
         	}else{
         		$.ajax({
         			   type: "PUT",
-        			   url: "/rest/content/category",
+        			   url: "${pageContext.request.contextPath }/content/category",
         			   data: {id:node.id,name:node.text},
         			   success: function(msg){
         				   //$.messager.alert('提示','新增商品成功!');

@@ -23,7 +23,7 @@ public class PageController {
 	 * @return
 	 */
 	@RequestMapping("/{page}")
-	public String showPage(@PathVariable String page) {
+	public String showPage(@PathVariable String page) {//@PathVariable:路径变量
 		return page;
 	}
 

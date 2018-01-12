@@ -25,8 +25,8 @@
          	<li>
          		<span>网站内容管理</span>
          		<ul>
-	         		<li data-options="attributes:{'url':'/rest/page/content-category'}">内容分类管理</li>
-	         		<li data-options="attributes:{'url':'/rest/page/content'}">内容管理</li>
+	         		<li data-options="attributes:{'url':'${pageContext.request.contextPath }/content-category'}">内容分类管理</li>
+	         		<li data-options="attributes:{'url':'${pageContext.request.contextPath }/content'}">内容管理</li>
 	         	</ul>
          	</li>
          </ul>

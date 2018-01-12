@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="/js/kindeditor-4.1.10/themes/default/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding:10px 10px 10px 10px">
 	<form id="contentAddForm" class="itemForm" method="post">
 		<input type="hidden" name="categoryId"/>
@@ -64,17 +64,20 @@
 					$.messager.alert('提示','表单还未填写完成!');
 					return ;
 				}
-				contentAddEditor.sync();
-				
-				/* $.post("/rest/content/save",$("#contentAddForm").serialize(), function(data){
+				contentAddEditor.sync();//同步富文本编辑器内容到textarea中,这样才能提交
+				/*
+				使用ajax时，常常需要拼装input数据为'name=abc&sex=1'这种形式，用JQuery的serialize方法可以轻松的完成这个工作! 
+				*/
+				 $.post("${pageContext.request.contextPath }/content/save",$("#contentAddForm").serialize(), function(data){
 					if(data.status == 200){
 						$.messager.alert('提示','新增内容成功!');
     					$("#contentList").datagrid("reload");
     					TT.closeCurrentWindow();
 					}
-				}); */
+				}); 
 				
 				//提交到后台的RESTful
+				/*
 				$.ajax({
 				   type: "POST",
 				   url: "/rest/content",
@@ -88,6 +91,7 @@
 					   $.messager.alert('提示','新增内容失败!');
 				   }
 				});
+				*/
 			},
 			clearForm : function(){
 				$('#contentAddForm').form('reset');
