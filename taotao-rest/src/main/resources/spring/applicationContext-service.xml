@@ -8,7 +8,35 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-	<!-- 包扫描器，扫描带@Service注解的类 -->
+	<!-- 包扫描器，扫描带@Service注解的类 context:component-scan：就开启注解，就可以autowire了，不用扫描到component包中 -->
 	<context:component-scan base-package="com.taotao.rest.service"></context:component-scan>
+	<!-- 单机版和集群版必须注释掉一个，不能共存 -->
+	<!-- 配置redis客户端单机版 -->
+	<!-- 配置 jedisPool -->
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="host" value="192.168.233.133"></constructor-arg>
+		<constructor-arg name="port" value="6379"></constructor-arg>
+	</bean>
+	<!-- 配置redis客户端实现类 -->
+	<bean id="jedisClientSingle" class="com.taotao.rest.component.impl.JedisClientSingle" />
+	
+	<!-- 配置redis客户端集群版 <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster"> 
+		<constructor-arg> <set> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.233.133" /> <constructor-arg name="port" value="7001" 
+		/> </bean> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.233.133" /> <constructor-arg name="port" value="7002" 
+		/> </bean> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.233.133" /> <constructor-arg name="port" value="7003" 
+		/> </bean> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.233.133" /> <constructor-arg name="port" value="7004" 
+		/> </bean> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.233.133" /> <constructor-arg name="port" value="7005" 
+		/> </bean> <bean class="redis.clients.jedis.HostAndPort"> <constructor-arg 
+		name="host" value="192.168.25.153" /> <constructor-arg name="port" value="7006" 
+		/> </bean> </set> </constructor-arg> </bean> -->
+		<!-- 配置redis集群客户端实现类 -->
+		<!-- 
+		<bean id="jedisClientCluster" class="com.taotao.rest.component.impl.JedisClientCluster" />
+		 -->
 	
 </beans>
