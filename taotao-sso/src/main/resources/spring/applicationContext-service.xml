@@ -14,7 +14,7 @@
 	<!-- 配置redis客户端单机版 -->
 	<!-- 配置 jedisPool -->
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-		<constructor-arg name="host" value="192.168.233.133"></constructor-arg>
+		<constructor-arg name="host" value="192.168.211.130"></constructor-arg>
 		<constructor-arg name="port" value="6379"></constructor-arg>
 	</bean>
 	<!-- 配置redis客户端实现类 -->
